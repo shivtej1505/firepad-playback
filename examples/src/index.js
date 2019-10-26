@@ -1,7 +1,9 @@
 import React from 'react';
-import { render} from 'react-dom';
-import MyComponent from '../../src';
+import { render } from 'react-dom';
+import { Editor } from '../../src/index';
+
 const App = () => (
-    <MyComponent />
+    <Editor apiKey={'AIzaSyCyPMAYoKPcPcPoofpweeXgakiUFOSE6ao'} databaseURL={'https://firepad-playback.firebaseio.com/'} slug={'demo'}/>
 );
+
 render(<App />, document.getElementById("root"));

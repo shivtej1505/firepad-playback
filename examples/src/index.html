@@ -8,9 +8,8 @@
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
 
-    <!-- CodeMirror -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.css"/>
+    <!-- Ace -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.5/ace.js"></script>
 
     <!-- Firepad -->
     <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.5.3/firepad.css" />
@@ -24,29 +23,29 @@
     </noscript>
     <div id="root"></div>
 
+    <!--<div id="firepad"></div>-->
+    <!--<script>-->
+        <!--function init() {-->
+            <!--// Initialize Firebase.-->
+            <!--var config = {-->
+                <!--apiKey: 'AIzaSyCyPMAYoKPcPcPoofpweeXgakiUFOSE6ao',-->
+                <!--databaseURL: 'https://firepad-playback.firebaseio.com/',-->
+                <!--authDomain: "https://firepad-playback.firebaseio.com/"-->
+            <!--};-->
+            <!--firebase.initializeApp(config);-->
 
+            <!--// Get Firebase Database reference.-->
+            <!--var firepadRef = firebase.database().ref();-->
+            <!--firepadRef = firepadRef.child('demo');-->
 
+            <!--// Create Ace editor.-->
+            <!--var editor = ace.edit('firepad');-->
 
-    <div id="firepad"></div>
-    <script>
-        function init() {
-            // Initialize the Firebase SDK.
-            firebase.initializeApp({
-                apiKey: 'AIzaSyCyPMAYoKPcPcPoofpweeXgakiUFOSE6ao\n',
-                databaseURL: 'https://firepad-playback.firebaseio.com/'
-            });
+            <!--// Create Firepad.-->
+            <!--var firepad = Firepad.fromACE(firepadRef, editor);-->
+        <!--}-->
+    <!--</script>-->
 
-            // Get Firebase Database reference.
-            var firepadRef = firebase.database().ref();
-
-            // Create CodeMirror (with lineWrapping on).
-            var codeMirror = CodeMirror(document.getElementById('firepad'), { lineWrapping: true });
-
-            // Create Firepad (with rich text toolbar and shortcuts enabled).
-            var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror,
-                { richTextShortcuts: true, richTextToolbar: true, defaultText: 'Hello, World!' });
-        }
-    </script>
 
 </body>
 </html>
