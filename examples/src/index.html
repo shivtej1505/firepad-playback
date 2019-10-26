@@ -3,11 +3,50 @@
     <title>My Component Demo</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+
+    <!-- CodeMirror -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.css"/>
+
+    <!-- Firepad -->
+    <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.5.3/firepad.css" />
+    <script src="https://cdn.firebase.com/libs/firepad/1.5.3/firepad.min.js"></script>
+
+
 </head>
-<body>
-<noscript>
-    You need to enable JavaScript to run this app.
-</noscript>
-<div id="root"></div>
+<body onload="init()">
+    <noscript>
+        You need to enable JavaScript to run this app.
+    </noscript>
+    <div id="root"></div>
+
+
+
+
+    <div id="firepad"></div>
+    <script>
+        function init() {
+            // Initialize the Firebase SDK.
+            firebase.initializeApp({
+                apiKey: 'AIzaSyCyPMAYoKPcPcPoofpweeXgakiUFOSE6ao\n',
+                databaseURL: 'https://firepad-playback.firebaseio.com/'
+            });
+
+            // Get Firebase Database reference.
+            var firepadRef = firebase.database().ref();
+
+            // Create CodeMirror (with lineWrapping on).
+            var codeMirror = CodeMirror(document.getElementById('firepad'), { lineWrapping: true });
+
+            // Create Firepad (with rich text toolbar and shortcuts enabled).
+            var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror,
+                { richTextShortcuts: true, richTextToolbar: true, defaultText: 'Hello, World!' });
+        }
+    </script>
+
 </body>
 </html>
